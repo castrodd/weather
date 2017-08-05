@@ -1,5 +1,9 @@
 <h1>Sign in</h1>
 
+<% flash.each do |key, value| %>
+    <div><%= value %></div>
+<% end %>
+
 <%= form_tag sessions_path do %>
   <div class="field">
     <%= label_tag :email %>
