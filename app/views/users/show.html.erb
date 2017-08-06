@@ -14,6 +14,7 @@
     <% else %>
       <% place.name.capitalize! %>
     <% end %>
+  
     <%= place.name %> <br>
     Current temperature: <%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %> Farenheit
     <br>
