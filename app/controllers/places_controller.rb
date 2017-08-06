@@ -7,7 +7,9 @@ class PlacesController < ApplicationController
 
 
   def create
-      if place_validate(params[:place][:name])
+      name = place_validate(params[:place][:name])
+      if name
+        params[:name] = name
         @place = current_user.places.new(place_params)
         if @place.save
           redirect_to user_path(current_user), notice: "City added."
@@ -17,6 +19,11 @@ class PlacesController < ApplicationController
       else
         redirect_to user_path(current_user), notice: "City unavailable. Perhaps check your spelling."
       end
+  end
+
+  def show
+    @place = Place.find_by(id: params[:id])
+    @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name}&APPID=7fec57ebd6b7829c707e3637694695d5")
   end
 
   def destroy
@@ -31,11 +38,12 @@ class PlacesController < ApplicationController
   end
 
   def place_validate(place)
+    #Checks user input and replaces with API's official name
     file = File.read('lib/assets/city.list.json')
     j = JSON.parse(file)
     j.each do |entry|
-      if entry['name'] == place.capitalize
-        return true
+      if place.match(/#{Regexp.quote(entry['name'])}/i)
+        return entry['name']
       end
     end
     return false
