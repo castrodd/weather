@@ -8,10 +8,11 @@
   <p> You have not added any cities yet. </p>
 <% else %>
   <% @data.keys.each do |place| %>
-    <%= place.name.capitalize %>: <%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %> Farenheit
+    <%= place.name.capitalize %> <br>
+    Current temperature: <%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %> Farenheit
     <br>
-    <%= link_to 'Delete', place_path(place), method: :delete %> |
-    <%= link_to 'Details', 
+    <%= link_to 'More Details', place_path(place) %> |
+    <%= link_to 'Delete', place_path(place), method: :delete %>
     <br>
     <br>
   <% end %>
