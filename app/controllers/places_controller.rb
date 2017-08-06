@@ -19,6 +19,11 @@ class PlacesController < ApplicationController
       end
   end
 
+  def show
+    @place = Place.find_by(id: params[:id])
+    @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name}&APPID=7fec57ebd6b7829c707e3637694695d5")
+  end
+
   def destroy
     place = Place.find_by(id: params[:id])
     place.destroy

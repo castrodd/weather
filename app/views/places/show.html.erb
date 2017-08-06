@@ -1,0 +1,10 @@
+<br>
+Currently: <%= @data['weather'][0]['description'] %>
+<br>
+Humidity: <%= @data['main']['humidity'] %>%
+<br>
+Today's Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round %>
+<br>
+Today's High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round %>
+<br>
+<%= link_to 'Back', user_path(current_user) %>
