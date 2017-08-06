@@ -15,7 +15,7 @@ class PlacesController < ApplicationController
           render :new
         end
       else
-        redirect_to user_path(current_user), notice: "City unavailable."
+        redirect_to user_path(current_user), notice: "City unavailable. Perhaps check your spelling."
       end
   end
 
@@ -34,7 +34,7 @@ class PlacesController < ApplicationController
     file = File.read('lib/assets/city.list.json')
     j = JSON.parse(file)
     j.each do |entry|
-      if entry['name'] == place
+      if entry['name'] == place.capitalize
         return true
       end
     end
