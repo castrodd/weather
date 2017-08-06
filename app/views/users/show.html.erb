@@ -4,7 +4,7 @@
   <p> You have not added any cities yet. </p>
 <% else %>
   <% @user.places.each do |place| %>
-    <%= place.name %>
+    <%= place.name %> <%= @data.to_json %><br>
   <% end %>
 <% end %>
 
