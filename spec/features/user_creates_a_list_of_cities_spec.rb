@@ -2,7 +2,7 @@ require 'rails_helper'
 
 require 'faker'
 
-RSpec.feature "User creates a list of cities", type: :feature do
+RSpec.feature "User creates a list", type: :feature do
   scenario "User can add cities to list of favorites" do
     mailbox = Faker::Internet.email
     key = Faker::Seinfeld.quote
