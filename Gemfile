@@ -63,3 +63,6 @@ gem 'hirb'
 
 # Make API calls
 gem 'httparty'
+
+# Reading OpenWeatherMap json file
+gem 'json'
