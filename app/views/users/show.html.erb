@@ -7,8 +7,8 @@
 <% if @user.places == [] %>
   <p> You have not added any cities yet. </p>
 <% else %>
-  <% @user.places.each do |place| %>
-    <%= place.name %> <%= @data.to_json %><%= link_to 'Delete', place_path(place), method: :delete %>
+  <% @data.keys.each do |place| %>
+    <%= place.name %>: <%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round(2) %> Celsius <br><%= link_to 'Delete', place_path(place), method: :delete %>
     <br>
     <br>
   <% end %>
