@@ -75,6 +75,7 @@ RSpec.feature "User creates account", type: :feature do
     fill_in 'Email', with: mailbox
     fill_in 'Password', with: key
     click_button 'Log in'
-    click_link ''
+    click_link 'Log out'
+    expect(page).to have_content 'Weather Station'
   end
 end
