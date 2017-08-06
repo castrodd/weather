@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 require 'faker'
 
 RSpec.feature "User creates a list of cities", type: :feature do
