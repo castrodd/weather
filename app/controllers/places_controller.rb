@@ -34,7 +34,7 @@ class PlacesController < ApplicationController
     file = File.read('lib/assets/city.list.json')
     j = JSON.parse(file)
     j.each do |entry|
-      if entry['name'] == place.downcase.capitalize
+      if entry['name'] == place
         return true
       end
     end
