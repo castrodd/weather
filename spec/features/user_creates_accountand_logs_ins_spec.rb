@@ -29,7 +29,7 @@ RSpec.feature "User creates account and logs in", type: :feature do
     fill_in 'Email', with: mailbox
     fill_in 'Password', with: key
     click_button 'Log in'
-    expect(page).to have_content "Logged in!"
+    expect(page).to have_content "Logged in"
   end
 
   scenario "User inputs wrong confirmation details" do

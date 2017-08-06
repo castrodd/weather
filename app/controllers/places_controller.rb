@@ -14,6 +14,12 @@ class PlacesController < ApplicationController
     end
   end
 
+  def destroy
+    place = Place.find_by(id: params[:id])
+    place.destroy
+    redirect_to user_path(current_user), notice: "City removed."
+  end
+
   private
   def place_params
     place = params.require(:place).permit(:name, :user_id)

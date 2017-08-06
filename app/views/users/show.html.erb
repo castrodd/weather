@@ -1,10 +1,16 @@
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <h1> Hi, <%= @user.email %> ! </h1>
 
 <% if @user.places == [] %>
   <p> You have not added any cities yet. </p>
 <% else %>
   <% @user.places.each do |place| %>
-    <%= place.name %>
+    <%= place.name %> <%= @data.to_json %><%= link_to 'Delete', place_path(place), method: :delete %>
+    <br>
+    <br>
   <% end %>
 <% end %>
 
