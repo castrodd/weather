@@ -1,0 +1,11 @@
+<h1> Hi, <%= @user.email %> ! </h1>
+
+<% if @user.places == [] %>
+  <p> You have not added any cities yet. </p>
+<% else %>
+  <% @user.places.each do |place| %>
+    <%= place.name %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Add City', new_place_path(current_user) %>
