@@ -1,0 +1,7 @@
+<h1> Add City </h1>
+
+<%= form_for @place do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.submit 'Add' %>
+<% end %>
