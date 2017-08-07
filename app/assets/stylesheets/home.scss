@@ -1,3 +1,33 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: Roboto;
+  background-image: url(image_path("sky.png"));
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.card {
+  background-color: #ecf0ed;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 150px;
+  margin-top: -8em;
+  margin-left: -15em;
+}
+
+h4, p {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
