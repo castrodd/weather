@@ -6,13 +6,13 @@ body {
   background-image: url(image_path("sky.png"));
 }
 
-.container {
+.homecontainer {
   height: 100%;
   width: 100%;
 }
 
-.card {
-  background-color: #ecf0ed;
+.indexbox {
+  background-color: #F5F5F5;
   position:fixed;
   top: 50%;
   left: 50%;
@@ -22,7 +22,7 @@ body {
   margin-left: -15em;
 }
 
-h4, p {
+.title, .text {
   display: flex;
   justify-content: center;
 }
