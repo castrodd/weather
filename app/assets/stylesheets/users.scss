@@ -1,3 +1,27 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form {
+  height: 100%;
+  width: 100%;
+}
+
+.formbox {
+  background-color: #F5F5F5;
+  position:fixed;
+  top: 50%;
+  left: 50%;
+  //width: 250px;
+  //height: 150px;
+  margin-top: -8em;
+  margin-left: -15em;
+}
+
+.message, .field, .actions, .back {
+  display: flex;
+  justify-content: center;
+}
+
+.actions {
+  margin: 5px;
+}
