@@ -1,20 +1,21 @@
-<div id='container'>
-  <div class='nav'>
-    <% if current_user %>
-      Logged in as <%= current_user.email %>.
-      <%= link_to "Log out", logout_path %>
-    <% else %>
-      <%= link_to "Sign up", signup_path %> |
-      <%= link_to "Log in", login_path %>
-    <% end %>
-  </div>
-</div>
-
 <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<div class="main">
-<h1>Weather Station</h1>
-<p>Check your weather here, there, or anywhere!</p>
+<div class="container">
+  <div class='card' style="width: 30rem;">
+    <div class='card-block'>
+      <h4 class="card-title">Weather Station</h4>
+      <p class="card-text"><em>Check your weather here, there, or anywhere!</em></p>
+      <div class="buttons">
+      <% if current_user %>
+      Logged in as <%= current_user.email %>.
+      <button class='btn-secondary'><%= link_to "Log out", logout_path %></button>
+      <% else %>
+      <button class='btn-secondary'><%= link_to "Sign up", signup_path %></button>
+      <button class='btn-secondary'><%= link_to "Log in", login_path %></button>
+      <% end %>
+      </div>
+    </div>
+  </div>
 </div>
