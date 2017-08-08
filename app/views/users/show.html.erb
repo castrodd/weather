@@ -20,30 +20,30 @@
     <div class='container-fluid'><p> You have not added any cities yet. </p></div>
     <% else %>
     <div class='container big-block'>
-    <div class="card-columns">
-    <% @data.keys.each do |place| %>
-      <% if place.name.split.length > 1 %>
-        <% p = place.name.split.each {|p| p.capitalize!} %>
-        <% place.name = p.join(' ') %>
-      <% else %>
-        <% place.name.capitalize! %>
-      <% end %>
+      <div class="card-columns">
+      <% @data.keys.each do |place| %>
+        <% if place.name.split.length > 1 %>
+          <% p = place.name.split.each {|p| p.capitalize!} %>
+          <% place.name = p.join(' ') %>
+        <% else %>
+          <% place.name.capitalize! %>
+        <% end %>
 
-    <div class='card tiles'>
-      <div class='card-block'>
-        <h4 class="card-title"><%= place.name %> </h4>
-        <h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4>
-        <button class="btn btn-outline-secondary"><%= link_to 'More Details', place_path(place) %> </button>
-        <button class="btn btn-outline-secondary"><%= link_to 'Delete', place_path(place), method: :delete %></button>
+      <div class='card tiles'>
+        <div class='card-block'>
+          <h4 class="card-title"><%= place.name %> </h4>
+          <h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4>
+          <button class="btn btn-outline-secondary"><%= link_to 'More Details', place_path(place) %> </button>
+          <button class="btn btn-outline-secondary"><%= link_to 'Delete', place_path(place), method: :delete %></button>
+        </div>
       </div>
+      <% end %>
+    <% end %>
     </div>
-    <% end %>
-    <% end %>
-  </div>
   </div>
 
-    <div class="adding">
-      <button type="button" class="btn btn-secondary add-city"><%= link_to 'Add City', new_place_path(current_user) %></button>
-    </div>
+  <div class="adding">
+    <button type="button" class="btn btn-primary add-city"><%= link_to 'Add City', new_place_path(current_user) %></button>
   </div>
+
 </body>

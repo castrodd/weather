@@ -5,3 +5,25 @@
   height: 100%;
   background-image: url(image_path("city.png"));
 }
+
+.newcity {
+  height: 100%;
+  background-image: url(image_path("empire.png"));
+}
+
+.newblock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formbox div {
+  display: flex;
+  justify-content: center;
+}
+
+.add-city-button {
+  display: flex !important;
+  justify-content: space-evenly !important;
+  margin-top: 10px;
+}
