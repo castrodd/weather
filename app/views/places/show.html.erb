@@ -1,7 +1,16 @@
-<body class='showcity'>
+<% desc =  @data['weather'][0]['description']  %>
+<% if desc.include?('haze') %>
+  <% backg = 'cloudy.png' %>
+<% elsif desc.include?('drizzle') %>
+  <% backg = 'sky.png' %>
+<% end %>
+
+
+<body class='showcity' style="background-image: url(image_path('<%= backg %>')) ;">
   <div class="container showcitymain">
     <div class='card showcityinner'>
       <div class='card-block showcitybox'>
+
         <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
         <% p = p.join(' ') %>
         <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
@@ -13,6 +22,7 @@
         <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
 
       <div class="showbutton"><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
+
       </div>
     </div>
   </div>
