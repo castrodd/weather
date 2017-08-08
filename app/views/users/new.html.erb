@@ -1,28 +1,30 @@
-<div class="container form">
-  <div class='card formbox' style="width: 30rem;">
-    <div class='card-block'>
-    <h2 class='message'>Join Weather Station</h2>
-    
-    <%= form_for @user do |f| %>
-      <% if @user.errors.any? %>
+<body>
+  <div class="container form">
+    <div class='card formbox' style="width: 30rem;">
+      <div class='card-block'>
+        <h2 class='message'>Join Weather Station</h2>
+
+        <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
         <div class="error_message">
           <h2>Please try again!</h2>
         </div>
-      <% end %>
+        <% end %>
 
-      <div class="field">
-        <%= f.text_field :email, placeholder: 'Email' %>
-      </div>
-      <div class="field">
-        <%= f.password_field :password, placeholder: 'Password' %>
-      </div>
-      <div class="field">
-        <%= f.password_field :password_confirmation, placeholder: 'Password confirmation' %>
-      </div>
-      <div class="actions"><%= f.submit 'Create Account'%></div>
-    <% end %>
+        <div class="field">
+          <%= f.text_field :email, placeholder: 'Email' %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password, placeholder: 'Password' %>
+        </div>
+        <div class="field">
+          <%= f.password_field :password_confirmation, placeholder: 'Password confirmation' %>
+        </div>
+        <div class="actions"><%= f.submit 'Create Account'%></div>
+        <% end %>
 
-    <div class="back"><button class="btn-secondary"><%= link_to 'Back', root_path %></button></div>
+        <div class="back"><button class="btn-secondary"><%= link_to 'Back', root_path %></button></div>
+      </div>
     </div>
   </div>
-</div>
+</body>

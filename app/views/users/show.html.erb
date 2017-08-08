@@ -1,41 +1,46 @@
-<div id='container'>
-  <div class='nav'>
-    <% if current_user %>
-      Logged in as <%= current_user.email %>.
-      <%= link_to "Log out", logout_path %>
-    <% else %>
-      <%= link_to "Sign up", signup_path %> |
-      <%= link_to "Log in", login_path %>
-    <% end %>
+<body class="showbody">
+  <div id='container'>
+    <div class='nav shownav'>
+        <div class="welcome"><h4><strong>Welcome back, <%= current_user.email %>!</strong></h4></div>
+        <div class="showlog"><button type="button" class="btn btn-outline-primary"><%= link_to "Log out", logout_path %></button></div>
+    </div>
   </div>
-</div>
 
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-<% end %>
+  <%#<div class='main'>
+    <div class='notices'>
+      <% if flash[:notice] %>
+  <%#    <div class="notice"><%= flash[:notice] %>
+  <%#       </div>
+      <% end %>
+  <%#  </div> %>
 
-<h1> Hi, <%= @user.email %> ! </h1>
+    <div><h1 class='text-center'>Your Cities</h1></div>
 
-<% if @user.places == [] %>
-  <p> You have not added any cities yet. </p>
-<% else %>
-  <% @data.keys.each do |place| %>
-    <% if place.name.split.length > 1 %>
-      <% p = place.name.split.each {|p| p.capitalize!} %>
-      <% place.name = p.join(' ') %>
+    <% if @user.places == [] %>
+    <div class='container-fluid'><p> You have not added any cities yet. </p></div>
     <% else %>
-      <% place.name.capitalize! %>
+
+    <% @data.keys.each do |place| %>
+    <% if place.name.split.length > 1 %>
+    <% p = place.name.split.each {|p| p.capitalize!} %>
+    <% place.name = p.join(' ') %>
+    <% else %>
+    <% place.name.capitalize! %>
+    <% end %>
+    <div class='container'>
+      <%= place.name %> <br>
+      Current temperature: <%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %> Farenheit
+      <br>
+      <%= link_to 'More Details', place_path(place) %> |
+      <%= link_to 'Delete', place_path(place), method: :delete %>
+      <br>
+      <br>
+    </div>
+    <% end %>
     <% end %>
 
-    <%= place.name %> <br>
-    Current temperature: <%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %> Farenheit
-    <br>
-    <%= link_to 'More Details', place_path(place) %> |
-    <%= link_to 'Delete', place_path(place), method: :delete %>
-    <br>
-    <br>
-  <% end %>
-<% end %>
-
-
-<%= link_to 'Add City', new_place_path(current_user) %>
+    <div class="adding">
+      <button type="button" class="btn btn-outline-primary"><%= link_to 'Add City', new_place_path(current_user) %></button>
+    </div>
+  </div>
+</body>
