@@ -29,7 +29,9 @@
 
 .showbody {
   background-image: none;
-  background-color: #f5f5f5;
+  //background-color: #f5f5f5;
+  background-image: url('horizon.png');
+  background-size: cover;
 }
 
 .shownav {
@@ -58,6 +60,7 @@
 
 .add-city {
   margin: 10px;
+  opacity: 0.8;
 }
 
 .big-block {
@@ -67,4 +70,5 @@
 
 .tiles {
   width: 25%;
+  opacity: 0.8;
 }
