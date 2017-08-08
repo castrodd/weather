@@ -28,7 +28,6 @@
 }
 
 .showbody {
-  background-image: none;
   //background-color: #f5f5f5;
   background-image: url('horizon.png');
   background-size: cover;
@@ -61,6 +60,10 @@
 .add-city {
   margin: 10px;
   opacity: 0.8;
+}
+
+.add-city a {
+  color: white;
 }
 
 .big-block {

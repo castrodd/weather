@@ -1,9 +1,17 @@
-<h1> Add City </h1>
+<body class="newcity"
 
-<%= form_for @place do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit 'Add' %>
-<% end %>
+  <div class="container form">
+    <div class='card formbox' style="width: 30rem;">
+      <div class='card-block newblock'>
+        <h2 class="message">Add City</h2>
 
-<%= link_to 'Back', user_path(current_user) %>
+        <%= form_for @place do |form| %>
+          <div class='new'><%= form.label :name %></div>
+          <div class='new'><%= form.text_field :name %></div>
+          <div class='new add-city-button'><%= form.submit 'Add' %>
+        <% end %>
+
+        <div class='new back-to-city'><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
+      </div>
+  </div>
+</body>
