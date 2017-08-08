@@ -1,13 +1,19 @@
-<div class="city">
+<body class='showcity'>
+  <div class="container showcitymain">
+    <div class='card showcityinner'>
+      <div class='card-block showcitybox'>
+        <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
+        <% p = p.join(' ') %>
+        <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
+        <h2 class="message showcitybox"><%= ((@data['main']['temp']* (9.0/5)) - 459.67).round(1) %>&deg; F</h2>
+        <h3 class="message showcitybox">Currently: <%= @data['weather'][0]['description'] %></h3>
+        <h3 class="message showcitybox">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
+        <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
 
-  <br>
-  Currently: <%= @data['weather'][0]['description'] %>
-  <br>
-  Today's Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round %>
-  <br>
-  Today's High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round %>
-  <br>
-  Humidity: <%= @data['main']['humidity'] %>%
-  <br>
-  <%= link_to 'Back', user_path(current_user) %>
-</div>
+      <div class="showbutton"><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
+      </div>
+    </div>
+  </div>
+</body>
