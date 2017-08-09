@@ -8,6 +8,15 @@
 
     <div><h1 class='text-center'>Your Cities</h1></div>
 
+    <div class="btn-group" data-toggle="buttons">
+      <label class="btn btn-primary active">
+        <input type="radio" name="options" id="option1" autocomplete="off" checked> F
+      </label>
+      <label class="btn btn-primary">
+        <input type="radio" name="options" id="option2" autocomplete="off"> C
+      </label>
+    </div>
+
     <% if @user.places == [] %>
     <div class='container-fluid'><p> You have not added any cities yet. </p></div>
     <% else %>
@@ -26,7 +35,8 @@
         <div class='card-block'>
           <% icon = ('http://openweathermap.org/img/w/' + @data[place]['weather'][0]['icon'] + '.png') %>
           <div class='namecity'><h4 class="card-title"><%= place.name %> </h4><%= image_tag icon %></div>
-          <h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4>
+          <div class='temp f'><h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4></div>
+          <div class='temp c' style='display:none;'><h4 class="card-title"><%= ((@data[place]['main']['temp']) - 273.15).round %>&deg; C</h4></div>
           <div class='citybuttons'><button class="btn btn-outline-secondary"><%= link_to 'More Details', place_path(place) %> </button>
           <button class="btn btn-outline-secondary"><%= link_to 'Delete', place_path(place), method: :delete %></button></div>
         </div>
