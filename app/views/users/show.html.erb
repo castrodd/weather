@@ -31,10 +31,11 @@
 
       <div class='card tiles'>
         <div class='card-block'>
-          <h4 class="card-title"><%= place.name %> </h4>
+          <% icon = ('http://openweathermap.org/img/w/' + @data[place]['weather'][0]['icon'] + '.png') %>
+          <div class='namecity'><h4 class="card-title"><%= place.name %> </h4><%= image_tag icon %></div>
           <h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4>
-          <button class="btn btn-outline-secondary"><%= link_to 'More Details', place_path(place) %> </button>
-          <button class="btn btn-outline-secondary"><%= link_to 'Delete', place_path(place), method: :delete %></button>
+          <div class='citybuttons'><button class="btn btn-outline-secondary"><%= link_to 'More Details', place_path(place) %> </button>
+          <button class="btn btn-outline-secondary"><%= link_to 'Delete', place_path(place), method: :delete %></button></div>
         </div>
       </div>
       <% end %>

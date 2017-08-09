@@ -27,3 +27,31 @@
   justify-content: space-evenly !important;
   margin-top: 10px;
 }
+
+html {
+  height: 100%;
+}
+
+.showcity {
+  min-height: 100%;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcityinner {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.showbutton {
+  display: flex;
+  justify-content: center;
+}
+
+.showcityinner {
+  width: 50%;
+}
