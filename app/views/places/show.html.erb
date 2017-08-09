@@ -40,7 +40,7 @@
   <div class="container showcitymain">
     <div class='card showcityinner'>
       <div class='card-block showcitybox'>
-       <% cache @date do %>
+
         <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
         <% p = p.join(' ') %>
         <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
@@ -50,7 +50,7 @@
         <h3 class="message showcitybox">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
         <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
         <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
-       <% end %>
+      
       <div class="showbutton"><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
 
       </div>
