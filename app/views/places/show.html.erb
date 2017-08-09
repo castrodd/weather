@@ -1,10 +1,59 @@
-<br>
-Currently: <%= @data['weather'][0]['description'] %>
-<br>
-Today's Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round %>
-<br>
-Today's High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round %>
-<br>
-Humidity: <%= @data['main']['humidity'] %>%
-<br>
-<%= link_to 'Back', user_path(current_user) %>
+<% desc =  @data['weather'][0]['description']  %>
+<% if desc.include?('thunderstorm') %>
+  <% backg = 'thunderstorm.png' %>
+<% elsif desc.include?('drizzle') %>
+  <% backg = 'drizzle.png' %>
+<% elsif desc.include?('rain') %>
+  <% backg = 'rain.png' %>
+<% elsif desc.include?('snow') %>
+  <% backg = 'snow.png' %>
+<% elsif desc.include?('clouds') %>
+  <% backg = 'clouds.png' %>
+<% elsif desc.include?('breeze') %>
+  <% backg = 'breeze.png' %>
+<% elsif desc.include?('clear') %>
+  <% backg = 'clear.png' %>
+<% elsif desc.include?('calm') %>
+  <% backg = 'calm.png' %>
+<% elsif desc.include?('gale') %>
+  <% backg = 'gale.png' %>
+<% elsif desc.include?('sleet') %>
+  <% backg = 'sleet.png' %>
+<% elsif desc.include?('mist') %>
+  <% backg = 'mist.png' %>
+<% elsif desc.include?('smoke') %>
+  <% backg = 'smoke.png' %>
+<% elsif desc.include?('haze') %>
+  <% backg = 'haze.png' %>
+<% elsif desc.include?('fog') %>
+  <% backg = 'fog.png' %>
+<% elsif desc.include?('tropical') %>
+  <% backg = 'tropical.png' %>
+<% elsif desc.include?('hurricane') %>
+  <% backg = 'hurricane.png' %>
+<% else %>
+  <% backg = 'default.png' %>
+<% end %>
+
+
+<body class='showcity' style="background-image: url( <%= image_path(backg) %> );">
+  <div class="container showcitymain">
+    <div class='card showcityinner'>
+      <div class='card-block showcitybox'>
+
+        <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
+        <% p = p.join(' ') %>
+        <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
+        <h2 class="message showcitybox"><%= ((@data['main']['temp']* (9.0/5)) - 459.67).round(1) %>&deg; F</h2>
+        <h3 class="message showcitybox">Currently: <%= @data['weather'][0]['description'] %></h3>
+        <h3 class="message showcitybox">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
+        <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
+
+      <div class="showbutton"><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
+
+      </div>
+    </div>
+  </div>
+</body>

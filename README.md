@@ -1,3 +1,3 @@
 # WEATHER STATION
 
-Check your weather here, there, and everywhere!
+Check your weather here, there, or anywhere!
