@@ -41,16 +41,28 @@
     <div class='card showcityinner'>
       <div class='card-block showcitybox'>
 
+        <div class="btn-group" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" name="options" id="option1" autocomplete="off" checked> F
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" name="options" id="option2" autocomplete="off"> C
+          </label>
+        </div>
+
         <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
         <% p = p.join(' ') %>
         <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
-        <h2 class="message showcitybox"><%= ((@data['main']['temp']* (9.0/5)) - 459.67).round(1) %>&deg; F</h2>
+        <h2 class="message showcitybox f"><%= ((@data['main']['temp']* (9.0/5)) - 459.67).round(1) %>&deg; F</h2>
+        <h2 class="message showcitybox c" style="display: none;"><%= (@data['main']['temp'] - 273.15).round(1) %>&deg; C</h2>
         <h3 class="message showcitybox">Currently: <%= @data['weather'][0]['description'] %></h3>
-        <h3 class="message showcitybox">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
-        <h3 class="message showcitybox">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox f">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox c" style="display: none;">Low: <%= (@data['main']['temp_min'] - 273.15).round(1) %>&deg; C</h3>
+        <h3 class="message showcitybox f">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
+        <h3 class="message showcitybox c" style="display: none;">High: <%= (@data['main']['temp_max'] - 273.15).round(1) %>&deg; C</h3>
         <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
         <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
-      
+
       <div class="showbutton"><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
 
       </div>
