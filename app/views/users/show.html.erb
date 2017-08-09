@@ -7,6 +7,7 @@
 <% if @user.places == [] %>
   <p> You have not added any cities yet. </p>
 <% else %>
+
   <% @data.keys.each do |place| %>
     <% if place.name.split.length > 1 %>
       <% p = place.name.split.each {|p| p.capitalize!} %>
@@ -22,6 +23,7 @@
     <br>
     <br>
   <% end %>
+
 <% end %>
 
 
