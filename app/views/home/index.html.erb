@@ -13,8 +13,8 @@
           Logged in as <%= current_user.email %>.
           <button class='btn-secondary'><%= link_to "Log out", logout_path %></button>
           <% else %>
-          <button class='btn-secondary'><%= link_to "Sign up", signup_path %></button>
-          <button class='btn-secondary'><%= link_to "Log in", login_path %></button>
+          <%= link_to "Sign up", signup_path, class:'btn btn-secondary' %>
+          <%= link_to "Log in", login_path, class:'btn btn-secondary' %>
           <% end %>
         </div>
       </div>
