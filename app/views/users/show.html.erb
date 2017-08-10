@@ -2,7 +2,7 @@
   <div id='container'>
     <div class='nav shownav'>
         <div class="welcome"><h4><strong>Welcome back, <%= current_user.email %>!</strong></h4></div>
-        <div class="showlog"><button type="button" class="btn btn-outline-primary"><%= link_to "Log out", logout_path %></button></div>
+        <div class="showlog"><%= link_to "Log out", logout_path, class:"btn btn-outline-primary" %></div>
     </div>
   </div>
 
@@ -37,8 +37,8 @@
           <div class='namecity'><h4 class="card-title"><%= place.name %> </h4><%= image_tag icon %></div>
           <div class='temp f'><h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4></div>
           <div class='temp c' style='display:none;'><h4 class="card-title"><%= ((@data[place]['main']['temp']) - 273.15).round %>&deg; C</h4></div>
-          <div class='citybuttons'><button class="btn btn-outline-secondary"><%= link_to 'More Details', place_path(place) %> </button>
-          <button class="btn btn-outline-secondary"><%= link_to 'Delete', place_path(place), method: :delete %></button></div>
+          <div class='citybuttons'><%= link_to 'More Details', place_path(place), class:"btn btn-outline-secondary" %>
+          <%= link_to 'Delete', place_path(place), method: :delete, class:"btn btn-outline-secondary" %></div>
         </div>
       </div>
       <% end %>
@@ -48,7 +48,7 @@
   </div>
 
   <div class="adding">
-    <button type="button" class="btn btn-primary add-city"><%= link_to 'Add City', new_place_path(current_user) %></button>
+  <%= link_to 'Add City', new_place_path(current_user), class:"btn btn-primary add-city" %>
   </div>
 
 </body>
