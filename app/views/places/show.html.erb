@@ -56,10 +56,10 @@
         <h2 class="message showcitybox f"><%= ((@data['main']['temp']* (9.0/5)) - 459.67).round(1) %>&deg; F</h2>
         <h2 class="message showcitybox c" style="display: none;"><%= (@data['main']['temp'] - 273.15).round(1) %>&deg; C</h2>
         <h3 class="message showcitybox">Currently: <%= @data['weather'][0]['description'] %></h3>
-        <h3 class="message showcitybox f">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
-        <h3 class="message showcitybox c" style="display: none;">Low: <%= (@data['main']['temp_min'] - 273.15).round(1) %>&deg; C</h3>
-        <h3 class="message showcitybox f">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round(1) %>&deg; F</h3>
-        <h3 class="message showcitybox c" style="display: none;">High: <%= (@data['main']['temp_max'] - 273.15).round(1) %>&deg; C</h3>
+        <h3 class="message showcitybox f">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round %>&deg; F</h3>
+        <h3 class="message showcitybox c" style="display: none;">Low: <%= (@data['main']['temp_min'] - 273.15).round %>&deg; C</h3>
+        <h3 class="message showcitybox f">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round %>&deg; F</h3>
+        <h3 class="message showcitybox c" style="display: none;">High: <%= (@data['main']['temp_max'] - 273.15).round  %>&deg; C</h3>
         <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
         <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
 
