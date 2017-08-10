@@ -63,7 +63,7 @@
         <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
         <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
 
-      <div class="showbutton"><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
+      <div class="showbutton"><%= link_to 'Back', user_path(current_user), class:"btn btn-secondary" %></button></div>
 
       </div>
     </div>

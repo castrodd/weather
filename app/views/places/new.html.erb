@@ -11,7 +11,7 @@
           <div class='new add-city-button newbox'><%= form.submit 'Add' %>
         <% end %>
 
-        <div class='new back-to-city newbox'><button class="btn-secondary"><%= link_to 'Back', user_path(current_user) %></button></div>
+        <div class='new back-to-city newbox'><%= link_to 'Back', user_path(current_user), class:"btn btn-secondary" %></div>
       </div>
   </div>
 </body>
