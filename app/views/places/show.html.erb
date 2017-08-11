@@ -1,42 +1,6 @@
-<% desc =  @data['weather'][0]['description']  %>
-<% if desc.include?('thunderstorm') %>
-  <% backg = 'thunderstorm.png' %>
-<% elsif desc.include?('drizzle') %>
-  <% backg = 'drizzle.png' %>
-<% elsif desc.include?('rain') %>
-  <% backg = 'rain.png' %>
-<% elsif desc.include?('snow') %>
-  <% backg = 'snow.png' %>
-<% elsif desc.include?('clouds') %>
-  <% backg = 'clouds.png' %>
-<% elsif desc.include?('breeze') %>
-  <% backg = 'breeze.png' %>
-<% elsif desc.include?('clear') %>
-  <% backg = 'clear.png' %>
-<% elsif desc.include?('calm') %>
-  <% backg = 'calm.png' %>
-<% elsif desc.include?('gale') %>
-  <% backg = 'gale.png' %>
-<% elsif desc.include?('sleet') %>
-  <% backg = 'sleet.png' %>
-<% elsif desc.include?('mist') %>
-  <% backg = 'mist.png' %>
-<% elsif desc.include?('smoke') %>
-  <% backg = 'smoke.png' %>
-<% elsif desc.include?('haze') %>
-  <% backg = 'haze.png' %>
-<% elsif desc.include?('fog') %>
-  <% backg = 'fog.png' %>
-<% elsif desc.include?('tropical') %>
-  <% backg = 'tropical.png' %>
-<% elsif desc.include?('hurricane') %>
-  <% backg = 'hurricane.png' %>
-<% else %>
-  <% backg = 'default.png' %>
-<% end %>
+<% backg =  set_background(@data['weather'][0]['description'])  %>
 
-
-<body class='showcity' style="background-image: url( <%= image_path(backg) %> );">
+<body class='showcity' style="background-image: url( <%= backg %> );">
   <div class="container showcitymain">
     <div class='card showcityinner'>
       <div class='card-block showcitybox'>
@@ -53,13 +17,13 @@
         <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
         <% p = p.join(' ') %>
         <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
-        <h2 class="message showcitybox f"><%= ((@data['main']['temp']* (9.0/5)) - 459.67).round(1) %>&deg; F</h2>
-        <h2 class="message showcitybox c" style="display: none;"><%= (@data['main']['temp'] - 273.15).round(1) %>&deg; C</h2>
+        <h2 class="message showcitybox f"><%= farenheit(@data['main']['temp']).round(1) %>&deg; F</h2>
+        <h2 class="message showcitybox c" style="display: none;"><%= celsius(@data['main']['temp']).round(1) %>&deg; C</h2>
         <h3 class="message showcitybox">Currently: <%= @data['weather'][0]['description'] %></h3>
-        <h3 class="message showcitybox f">Low: <%= ((@data['main']['temp_min']* (9.0/5)) - 459.67).round %>&deg; F</h3>
-        <h3 class="message showcitybox c" style="display: none;">Low: <%= (@data['main']['temp_min'] - 273.15).round %>&deg; C</h3>
-        <h3 class="message showcitybox f">High: <%= ((@data['main']['temp_max']* (9.0/5)) - 459.67).round %>&deg; F</h3>
-        <h3 class="message showcitybox c" style="display: none;">High: <%= (@data['main']['temp_max'] - 273.15).round  %>&deg; C</h3>
+        <h3 class="message showcitybox f">Low: <%= farenheit(@data['main']['temp_min']).round %>&deg; F</h3>
+        <h3 class="message showcitybox c" style="display: none;">Low: <%= celsius(@data['main']['temp_min']).round %>&deg; C</h3>
+        <h3 class="message showcitybox f">High: <%= farenheit(@data['main']['temp_max']).round %>&deg; F</h3>
+        <h3 class="message showcitybox c" style="display: none;">High: <%= celsius(@data['main']['temp_max']).round  %>&deg; C</h3>
         <h3 class="message showcitybox">Humidity: <%= @data['main']['humidity'] %>%</h3>
         <h3 class="message showcitybox">Wind: <%= (@data['wind']['speed']).round(1) %> mph</h3>
 
