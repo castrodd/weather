@@ -35,7 +35,7 @@
         <div class='card-block'>
           <% icon = ('http://openweathermap.org/img/w/' + @data[place]['weather'][0]['icon'] + '.png') %>
           <div class='namecity'><h4 class="card-title"><%= place.name %> </h4><%= image_tag icon %></div>
-          <div class='temp f'><h4 class="card-title"><%= (((@data[place]['main']['temp']) * (9.0/5)) - 459.67).round %>&deg; F</h4></div>
+          <div class='temp f'><h4 class="card-title"><%= farenheit(@data[place]['main']['temp']).round %>&deg; F</h4></div>
           <div class='temp c' style='display:none;'><h4 class="card-title"><%= ((@data[place]['main']['temp']) - 273.15).round %>&deg; C</h4></div>
           <div class='citybuttons'><%= link_to 'More Details', place_path(place), class:"btn btn-outline-secondary" %>
           <%= link_to 'Delete', place_path(place), method: :delete, class:"btn btn-outline-secondary" %></div>

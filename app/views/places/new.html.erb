@@ -6,7 +6,6 @@
         <h2 class="message newbox">Add City</h2>
 
         <%= form_for @place do |form| %>
-          <div class='new newbox'><%= form.label :name %></div>
           <div class='new newbox'><%= form.text_field :name %></div>
           <div class='new add-city-button newbox'><%= form.submit 'Add' %>
         <% end %>
