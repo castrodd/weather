@@ -12,7 +12,7 @@ body {
 }
 
 .indexbox {
-  display: table;
+  display: table !important;
   background-color: #F5F5F5;
   position:fixed;
   top: 50%;
