@@ -6,12 +6,12 @@ class PlacesController < ApplicationController
   end
 
   def create
-        @place = current_user.places.new(place_params)
-        if @place.save
-          redirect_to user_path(current_user), notice: "City added."
-        else
-          redirect_to user_path(current_user), notice: "City unavailable. Please try again."
-        end
+    @place = current_user.places.new(place_params)
+    if @place.save
+      redirect_to user_path(current_user), notice: "City added."
+    else
+      redirect_to user_path(current_user), notice: "City unavailable. Please try again."
+    end
   end
 
   def show
