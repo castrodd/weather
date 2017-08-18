@@ -22,7 +22,7 @@
     <% else %>
     <div class='container big-block'>
       <div class="card-columns">
-      <% cache @data do %>
+
       <% @data.keys.each do |place| %>
         <% if place.name.split.length > 1 %>
           <% p = place.name.split.each {|p| p.capitalize!} %>
@@ -43,7 +43,7 @@
       </div>
       <% end %>
     <% end %>
-    <% end %>
+  
     </div>
   </div>
 
