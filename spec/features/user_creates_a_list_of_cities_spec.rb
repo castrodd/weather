@@ -1,19 +1,22 @@
 # encoding: UTF-8
 require 'rails_helper'
+require 'faker'
 
 RSpec.feature "User creates list", type: :feature do
 
   before :each do
+    @mailbox = Faker::Internet.email
+    @key = Faker::Seinfeld.quote
     visit root_path
     click_link 'Sign up'
-    fill_in 'Email', with: 'address@email.com'
-    fill_in 'Password', with: 'thisisonlyatest'
-    fill_in 'user_password_confirmation', with: 'thisisonlyatest'
+    fill_in 'Email', with: @mailbox
+    fill_in 'Password', with: @key
+    fill_in 'user_password_confirmation', with: @key
     click_button 'Create Account'
     visit root_path
     click_link 'Log in'
-    fill_in 'email', with: 'address@email.com'
-    fill_in 'password', with: 'thisisonlyatest'
+    fill_in 'email', with: @mailbox
+    fill_in 'password', with: @key
     click_button 'Enter'
     click_link 'Add City'
   end
