@@ -23,7 +23,7 @@
     <div class='container big-block'>
       <div class="card-columns">
 
-      <% Rails.cache.write(@data, expires_in: 1800) do %>
+      <% Rails.cache.fetch(@data, expires_in: 1800) do %>
         <% @data = {} %>
         <% @places.each do |city| %>
         <%   @data[city] = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{city.name}&APPID=7fec57ebd6b7829c707e3637694695d5") %>
