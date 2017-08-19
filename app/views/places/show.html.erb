@@ -1,6 +1,4 @@
-<% Rails.cache.fetch(@data, expires_in: 1800) do %>
-  <% @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name}&APPID=7fec57ebd6b7829c707e3637694695d5") %>
-<% end %>
+<% @data = Rails.cache.fetch('call')[@place.name] %>
 
 <% backg =  set_background(@data['weather'][0]['description'])  %>
 
