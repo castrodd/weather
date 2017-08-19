@@ -75,4 +75,8 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
+# Rails console pretty-printer
 gem 'awesome_print'
+
+# Required to use mem-cache on Heroku
+gem 'dalli'
