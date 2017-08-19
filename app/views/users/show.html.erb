@@ -23,8 +23,8 @@
     <div class='container big-block'>
       <div class="card-columns">
 
-      <% @data = Rails.cache.fetch('call') %>
-      <% if !(@data) %>
+      <% response = Rails.cache.fetch('call') %>
+      <% if !(response) %>
         <% Rails.cache.write('call', @data, expires_in: 1800) do %>
           <% @data = {} %>
           <% @places.each do |city| %>
@@ -32,6 +32,7 @@
           <% end %>
         <% end %>
       <% end %>
+      <% @data ||= response %>
 
       <% @data.keys.each do |place| %>
         <% if place.name.split.length > 1 %>
