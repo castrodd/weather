@@ -1,8 +1,9 @@
-<% response = Rails.cache.read('call') %>
+<% response = Rails.cache.read(@place.name) %>
 <% if response %>
   <% @data = response[@place.name] %>
 <% else %>
   <% @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name}&APPID=7fec57ebd6b7829c707e3637694695d5").parsed_response %>
+  <% Rails.cache.write(@place.name, @data, expires_in: 1800) %>
 <% end %>
 
 <% backg =  set_background(@data['weather'][0]['description'])  %>
