@@ -24,7 +24,7 @@
       <div class="card-columns">
 
       <% response = Rails.cache.read(@user.id.to_s) %>
-      <% if !(response) %>
+      <% if !(response) || response.keys.count != @places.count  %>
           <% @data = {} %>
           <% @places.each do |city| %>
             <%  @data[city] = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{city.name}&APPID=7fec57ebd6b7829c707e3637694695d5").parsed_response %>
