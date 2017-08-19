@@ -1,3 +1,5 @@
+<% @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name}&APPID=7fec57ebd6b7829c707e3637694695d5") %>
+
 <% backg =  set_background(@data['weather'][0]['description'])  %>
 
 <body class='showcity' style="background-image: url( <%= backg %> );">
@@ -16,6 +18,7 @@
 
         <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
         <% p = p.join(' ') %>
+
         <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
         <h2 class="message showcitybox f"><%= farenheit(@data['main']['temp']).round(1) %>&deg; F</h2>
         <h2 class="message showcitybox c" style="display: none;"><%= celsius(@data['main']['temp']).round(1) %>&deg; C</h2>
