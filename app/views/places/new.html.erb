@@ -1,6 +1,41 @@
 <body class="newcity"
 
   <div class="container form">
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Enter A City">
+      <input id="submit" type="button" value="Geocode">
+    </div>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 3,
+          center: {lat: 0, lng: 0}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMrw7LcGZP3J92IyhwvDirLRB0doHyXzE&callback=initMap"
+    async defer></script>
     <div class='card formbox' style="width: 30rem;">
       <div class='card-block newblock newbox'>
         <h2 class="message newbox">Add City</h2>
@@ -13,4 +48,6 @@
         <div class='new back-to-city newbox'><%= link_to 'Back', user_path(current_user), class:"btn btn-secondary" %></div>
       </div>
   </div>
+
+
 </body>
