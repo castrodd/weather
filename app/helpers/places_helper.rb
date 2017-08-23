@@ -1,7 +1,6 @@
 module PlacesHelper
   def set_country(country)
-    codes = Hash[
-      'Afghanistan',	'AF',
+    codes = Hash['Afghanistan',	'AF',
       'Åland Islands',	'AX',
       'Albania',	'AL',
       'Algeria',	'DZ',
@@ -177,7 +176,7 @@ module PlacesHelper
       'Pitcairn',	'PN',
       'Poland',	'PL',
       'Portugal',	'PT',
-      'Puerto', 'Rico',	'PR',
+      'Puerto Rico',	'PR',
       'Qatar',	'QA',
       'Reunion',	'RE',
       'Romania',	'RO',

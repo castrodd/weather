@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
   require 'json'
+  include PlacesHelper
 
   def new
     @place = current_user.places.new
@@ -25,7 +26,6 @@ class PlacesController < ApplicationController
   end
 
   private
-
   def place_params
     place = params.require(:place).permit(:name, :country, :user_id)
   end
