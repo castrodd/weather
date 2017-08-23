@@ -2,7 +2,8 @@
 <% if response %>
   <% @data = response %>
 <% else %>
-  <% @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name}&APPID=7fec57ebd6b7829c707e3637694695d5").parsed_response %>
+  <% country = set_country(@place.country) %>
+  <% @data = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?q=#{@place.name},#{country}&APPID=7fec57ebd6b7829c707e3637694695d5").parsed_response %>
   <% Rails.cache.write(@place.name, @data, expires_in: 1800) %>
 <% end %>
 
@@ -25,7 +26,7 @@
         <% p = @place.name.split(' ').each {|word| word.capitalize!} %>
         <% p = p.join(' ') %>
 
-        <h2 class="message showcitybox"><%= p %>, <%= @data['sys']['country'] %></h2>
+        <h2 class="message showcitybox"><%= p %>, <%= @place.country %></h2>
         <h2 class="message showcitybox f"><%= farenheit(@data['main']['temp']).round(1) %>&deg; F</h2>
         <h2 class="message showcitybox c" style="display: none;"><%= celsius(@data['main']['temp']).round(1) %>&deg; C</h2>
         <h3 class="message showcitybox">Currently: <%= @data['weather'][0]['description'] %></h3>
