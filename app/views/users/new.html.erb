@@ -4,7 +4,7 @@
       <div class='card-block'>
         <h2 class='message'>Join Weather Station</h2>
 
-        <%= form_for @user do |f| %>
+        <%= form_for @user, remote: request.xhr?, html: { data: { modal: true } } do |f| %>
         <% if @user.errors.any? %>
         <div class="error_message text-center">
           <h2>Please try again!</h2>
@@ -27,4 +27,5 @@
       </div>
     </div>
   </div>
+</div>
 </body>

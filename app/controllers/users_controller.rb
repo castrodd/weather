@@ -1,10 +1,14 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
+
   def new
     @user = User.new
+    respond_modal_with @user
   end
 
   def create
     @user = User.new(user_params)
+    respond_modal_with @user, location: root_path
     if @user.save
       redirect_to root_path, notice: "New account created! Please log in."
     else
