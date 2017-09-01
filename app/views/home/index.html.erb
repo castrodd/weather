@@ -4,6 +4,9 @@
   <% end %>
 
   <div class="container homecontainer">
+    <div class="fullscreen-bg">
+      <%= video_tag("sunrise.mp4", size: "640x360", controls: false, autoplay: true, muted: true, loop: true, poster: image_path("poster.jpg")) %>
+    </div>
     <div class='card indexbox' style="width: 30rem;">
       <div class='card-block'>
         <h2 class="card-title title">Weather Station</h2>
