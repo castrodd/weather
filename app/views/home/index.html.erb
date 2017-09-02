@@ -16,11 +16,14 @@
           Logged in as <%= current_user.email %>.
           <button class='btn-secondary'><%= link_to "Log out", logout_path %></button>
           <% else %>
-          <%= link_to "Sign up", signup_path, class:'btn btn-secondary' %>
-          <%= link_to "Log in", login_path, class:'btn btn-secondary' %>
+          <%= link_to "Sign up", "#", data: {toggle: "modal", target: "#usermodal"}, class:'btn btn-secondary' %>
+          <%= link_to "Log in", "#", data: {toggle: "modal", target: "#sessionmodal"}, class:'btn btn-secondary' %>
           <% end %>
         </div>
       </div>
     </div>
   </div>
+
+  <%= render partial: "users/modal1" %>
+  <%= render partial: "sessions/modal2" %>
 </body>

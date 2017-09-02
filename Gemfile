@@ -81,3 +81,5 @@ gem 'awesome_print'
 
 # Required to use mem-cache on Heroku
 gem 'dalli'
+
+gem 'responders'
