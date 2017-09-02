@@ -4,10 +4,11 @@
     <div class="modal-content">
       <div class="modal-header views">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+        <h4 class="modal-title" id="myModalLabel">Enter Weather Station</h4>
       </div>
       <div class="modal-body">
-        <h1>Sign in</h1>
+        <div><h1>Sign in</h1></div>
+        <div><p><em>Please enter your email, then password.</em></p></div>
 
         <%= form_tag sessions_path do %>
         <div class="field">
@@ -20,7 +21,7 @@
           <%= check_box_tag :remember_me, 1, params[:remember_me] %>
           <%= label_tag :remember_me %>
         </div>
-        <div class="actions"><%= submit_tag "Enter" %></div>
+        <div class="actions"><%= submit_tag "Enter", class:'btn btn-secondary' %></div>
         <% end %>
       </div>
     </div>
